@@ -119,9 +119,12 @@ export default function PricingPage() {
                     <div className="text-xs sm:text-sm text-green-400 mt-1">
                       💰 Economize R$ {PRICING.basic.savings.toFixed(2)} por ano (30% OFF)
                     </div>
-                    <div className="flex items-center gap-2 mt-3 text-xs sm:text-sm text-gray-400">
-                      <CreditCard className="w-4 h-4" />
-                      <span>ou 12x de R$ {calculateInstallments(PRICING.basic.annual)} no cartão</span>
+                    <div className="flex items-center gap-2 mt-3 p-3 bg-gradient-to-r from-blue-600/10 to-blue-700/10 border border-blue-500/30 rounded-lg">
+                      <CreditCard className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                      <div className="text-sm">
+                        <div className="text-blue-300 font-semibold">Parcele em até 12x sem juros</div>
+                        <div className="text-gray-400">12x de R$ {calculateInstallments(PRICING.basic.annual)} no cartão</div>
+                      </div>
                     </div>
                   </>
                 )}
@@ -174,9 +177,12 @@ export default function PricingPage() {
                     <div className="text-xs sm:text-sm text-green-400 mt-1">
                       💰 Economize R$ {PRICING.premium.savings.toFixed(2)} por ano (36% OFF)
                     </div>
-                    <div className="flex items-center gap-2 mt-3 text-xs sm:text-sm text-blue-300 font-medium">
-                      <CreditCard className="w-4 h-4" />
-                      <span>ou 12x de R$ {calculateInstallments(PRICING.premium.annual)} no cartão</span>
+                    <div className="flex items-center gap-2 mt-3 p-3 bg-gradient-to-r from-green-600/20 to-blue-600/20 border-2 border-green-500/50 rounded-lg animate-pulse">
+                      <CreditCard className="w-5 h-5 text-green-400 flex-shrink-0" />
+                      <div className="text-sm">
+                        <div className="text-green-300 font-bold">🔥 Parcele em até 12x sem juros!</div>
+                        <div className="text-blue-200 font-semibold">12x de R$ {calculateInstallments(PRICING.premium.annual)} no cartão</div>
+                      </div>
                     </div>
                   </>
                 )}
@@ -260,7 +266,7 @@ export default function PricingPage() {
                 },
                 {
                   question: "Posso parcelar no cartão?",
-                  answer: "Sim! Para planos anuais, oferecemos parcelamento em até 12x sem juros no cartão de crédito. É a melhor forma de garantir seu ano de transformação."
+                  answer: "Sim! Para planos anuais, oferecemos parcelamento em até 12x sem juros no cartão de crédito. É a melhor forma de garantir seu ano de transformação com parcelas que cabem no bolso."
                 },
                 {
                   question: "Posso mudar de plano depois?",
@@ -268,11 +274,15 @@ export default function PricingPage() {
                 },
                 {
                   question: "Como funciona a cobrança anual?",
-                  answer: "No plano anual, você paga uma vez por ano e economiza até 36% comparado ao plano mensal. É a melhor opção para quem está comprometido com a transformação."
+                  answer: "No plano anual, você paga uma vez por ano (ou parcela em até 12x sem juros) e economiza até 36% comparado ao plano mensal. É a melhor opção para quem está comprometido com a transformação."
                 },
                 {
                   question: "Posso cancelar a qualquer momento?",
                   answer: "Sim! Não há fidelidade. Você pode cancelar sua assinatura a qualquer momento e continuará tendo acesso até o fim do período pago."
+                },
+                {
+                  question: "O parcelamento tem juros?",
+                  answer: "Não! O parcelamento em até 12x é totalmente sem juros. Você paga o mesmo valor total, apenas dividido em parcelas menores no seu cartão de crédito."
                 }
               ].map((faq, index) => (
                 <div
@@ -294,8 +304,18 @@ export default function PricingPage() {
               </h2>
               <p className="text-base sm:text-xl text-gray-300 mb-6 sm:mb-8 px-4">
                 Garanta um ano inteiro de acesso pelo preço de 7 meses. 
-                Comece hoje com 7 dias grátis!
+                Parcele em até 12x sem juros no cartão!
               </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+                <div className="flex items-center gap-2 text-green-400">
+                  <CreditCard className="w-5 h-5" />
+                  <span className="font-semibold">12x de R$ {calculateInstallments(PRICING.premium.annual)}</span>
+                </div>
+                <span className="text-gray-400 hidden sm:inline">ou</span>
+                <div className="text-blue-400 font-semibold">
+                  R$ {PRICING.premium.annual.toFixed(2)} à vista
+                </div>
+              </div>
               <Link
                 href="/login"
                 className="inline-flex items-center gap-2 px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 hover:scale-105 shadow-2xl shadow-blue-600/50"
@@ -304,7 +324,7 @@ export default function PricingPage() {
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <p className="text-xs sm:text-sm text-gray-400 mt-4 px-4">
-                🎁 7 dias grátis • Cancele quando quiser • Sem taxas ocultas • Parcele em até 12x
+                🎁 7 dias grátis • Cancele quando quiser • Sem taxas ocultas • Parcele em até 12x sem juros
               </p>
             </div>
           </div>
